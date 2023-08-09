@@ -20,31 +20,31 @@ jobs:
     - name: Run Maven Build inside Docker container
       run: |
         docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
-        mvn clean install -DskipTests && \
+        mvn clean install -DskipTests -X && \
         echo Building addons-core... && \
-        cd addons-core && mvn clean install -DskipTests && cd .. && \
+        cd addons-core && mvn clean install -DskipTests -X && cd .. && \
         echo Building addons POM only... && \
         cd addons && mvn clean install -N && cd .. && \
         echo Building nuxeo-dmk-adaptor... && \
-        cd nuxeo-dmk-adaptor && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-dmk-adaptor && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-platform-lang-ext && \
-        cd nuxeo-platform-lang-ext && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-platform-lang-ext && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-binary-metadata && \
-        cd nuxeo-binary-metadata && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-binary-metadata && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-platform-suggestbox && \
-        cd nuxeo-platform-suggestbox && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-platform-suggestbox && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-platform-document-routing... && \
-        cd nuxeo-platform-document-routing && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-platform-document-routing && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-chemistry... && \
-        cd nuxeo-chemistry && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-chemistry && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-filesystem-connectors && \
-        cd nuxeo-filesystem-connectors && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-filesystem-connectors && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-platform-pdf-utils... && \
-        cd nuxeo-platform-pdf-utils && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-platform-pdf-utils && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-apidoc-server... && \
-        cd nuxeo-apidoc-server && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-apidoc-server && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-connect-tools... && \
-        cd nuxeo-connect-tools && mvn clean install -DskipTests && cd .. && \
+        cd nuxeo-connect-tools && mvn clean install -DskipTests -X && cd .. && \
         echo Building nuxeo-logs-viewer... && \
         cd ../../../nuxeo-logs-viewer && git checkout release-10.10-HF62 && mvn clean install -DskipTests && cd .. && \
         echo Building nuxeo-shell... && \
