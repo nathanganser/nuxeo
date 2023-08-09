@@ -1,6 +1,6 @@
 {
     "name": "Your Codespace Environment Name",
-    "dockerFile": "Dockerfile",
+    "dockerFile": "../Dockerfile",
     "forwardPorts": [],
     "postCreateCommand": "echo 'Codespace setup complete!'"
   }
