@@ -21,8 +21,9 @@ jobs:
       run: |
         docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
         mkdir -p ~/.m2 && \
-        cp /workspace/nuxeo/settings.xml ~/.m2/"
-
+        cp /workspace/nuxeo/settings.xml ~/.m2/ && \
+        echo 'Checking if settings.xml was copied...' && \
+        if [ -f ~/.m2/settings.xml ]; then echo 'settings.xml successfully copied!'; else echo 'settings.xml copy failed!'; exit 1; fi"
 
     - name: Run Maven Build inside Docker container
       run: |
