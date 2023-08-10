@@ -34,7 +34,7 @@ jobs:
         -DgroupId=org.nuxeo.build \
         -DartifactId=ant-assembly-maven-plugin \
         -Dversion=2.1.5 \
-        -Dpackaging=jar" && \
+        -Dpackaging=jar && \
         mvn clean install -DskipTests -X && \
         cd addons-core && mvn clean install -DskipTests -X && cd .. && \
         cd addons && mvn clean install -N && cd .. && \
