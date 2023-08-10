@@ -17,6 +17,13 @@ jobs:
     - name: Build Docker image
       run: docker build . -t local_build_image
 
+    - name: Setup Maven settings.xml
+      run: |
+        docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
+        mkdir -p ~/.m2 && \
+        cp /workspace/settings.xml ~/.m2/"
+
+
     - name: Run Maven Build inside Docker container
       run: |
         docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
