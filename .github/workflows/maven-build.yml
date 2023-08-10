@@ -22,6 +22,7 @@ jobs:
         docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
         mvn install:install-file \
         -Dfile=/workspaces/nuxeo/ant-assembly-maven-plugin-2.1.5.jar \
+        -DpomFile=https://maven-eu.nuxeo.org/nexus/content/groups/public/org/nuxeo/build/ant-assembly-maven-plugin/2.1.5/ant-assembly-maven-plugin-2.1.5.pom \
         -DgroupId=org.nuxeo.build \
         -DartifactId=ant-assembly-maven-plugin \
         -Dversion=2.1.5 \
