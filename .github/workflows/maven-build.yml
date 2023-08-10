@@ -19,22 +19,22 @@ jobs:
 
     - name: Setup Maven settings.xml
       run: |
-        docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
+        docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace local_build_image /bin/bash -c "\
         mkdir -p ~/.m2 && \
-        cp /workspace/nuxeo/settings.xml ~/.m2/ && \
+        cp /workspace/settings.xml ~/.m2/ && \
         echo 'Checking if settings.xml was copied...' && \
         if [ -f ~/.m2/settings.xml ]; then echo 'settings.xml successfully copied!'; else echo 'settings.xml copy failed!'; exit 1; fi"
 
     - name: Run Maven Build inside Docker container
       run: |
-        docker run --rm -v $PWD:/workspace -w /workspace local_build_image /bin/bash -c "\
+        docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace local_build_image /bin/bash -c "\
         mvn install:install-file \
-        -Dfile=/workspaces/nuxeo/ant-assembly-maven-plugin-2.1.5.jar \
-        -DpomFile=/workspaces/nuxeo/ant-assembly-maven-plugin-2.1.5.pom \
+        -Dfile=/workspace/nuxeo/ant-assembly-maven-plugin-2.1.5.jar \
+        -DpomFile=/workspace/nuxeo/ant-assembly-maven-plugin-2.1.5.pom \
         -DgroupId=org.nuxeo.build \
         -DartifactId=ant-assembly-maven-plugin \
         -Dversion=2.1.5 \
-        -Dpackaging=jar && \
+        -Dpackaging=jar" && \
         mvn clean install -DskipTests -X && \
         cd addons-core && mvn clean install -DskipTests -X && cd .. && \
         cd addons && mvn clean install -N && cd .. && \
