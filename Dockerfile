@@ -5,13 +5,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages and dependencies
 RUN apt-get update && \
-    apt-get install -y wget openjdk-8-jdk git imagemagick libreoffice pdftohtml python2.7 && \
-    update-java-alternatives --set java-1.8.0-openjdk-amd64
+    apt-get install -y wget openjdk-8-jdk git imagemagick libreoffice pdftohtml python2.7
 
 # Install Apache Maven 3.2
-RUN wget http://archive.apache.org/dist/maven/maven-3/3.2.0/binaries/apache-maven-3.2.0-bin.tar.gz && \
-    tar xzvf apache-maven-3.2.0-bin.tar.gz -C /opt/ && \
-    ln -s /opt/apache-maven-3.2.0/bin/mvn /usr/bin/mvn
+RUN wget https://archive.apache.org/dist/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz && \
+    tar xzvf apache-maven-3.2.5-bin.tar.gz -C /opt/ && \
+    ln -s /opt/apache-maven-3.2.5/bin/mvn /usr/bin/mvn
 
 # Install Apache Ant 1.7.1
 RUN wget http://archive.apache.org/dist/ant/binaries/apache-ant-1.7.1-bin.tar.gz && \
