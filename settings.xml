@@ -3,6 +3,7 @@
   <activeProfiles>
     <activeProfile>Nuxeo</activeProfile>
   </activeProfiles>
+  
   <profiles>
     <profile>
       <id>Nuxeo</id>
@@ -47,3 +48,24 @@
           </releases>
           <snapshots>
             <updatePolicy>always</updatePolicy>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  
+  <servers>
+    <server>
+      <id>central</id>
+      <configuration>
+        <httpConfiguration>
+          <all>
+            <connectionTimeout>120000</connectionTimeout>
+            <readTimeout>120000</readTimeout>
+          </all>
+        </httpConfiguration>
+      </configuration>
+    </server>
+  </servers>
+</settings>
