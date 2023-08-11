@@ -28,4 +28,4 @@ jobs:
     - name: Run Maven Build inside Docker container
       run: |
         docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace local_build_image /bin/bash -c "\
-        mvn clean install -DskipTests -X -e"
+        mvn clean install -DskipTests -X"
