@@ -25,7 +25,7 @@ jobs:
         echo 'Checking if settings.xml was copied...' && \
         if [ -f ~/.m2/settings.xml ]; then echo 'settings.xml successfully copied!'; else echo 'settings.xml copy failed!'; exit 1; fi"
 
-    - name: Run Maven Build inside Docker container
+    - name: Add Ant File
       run: |
         docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace local_build_image /bin/bash -c "\
         mvn install:install-file \
@@ -39,34 +39,4 @@ jobs:
     - name: Run Maven Build inside Docker container
       run: |
         docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace local_build_image /bin/bash -c "\
-        mvn clean install -DskipTests -X && \
-        cd addons-core && mvn clean install -DskipTests -X && cd .. && \
-        cd addons && mvn clean install -N && cd .. && \
-        cd nuxeo-dmk-adaptor && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-platform-lang-ext && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-binary-metadata && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-platform-suggestbox && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-platform-document-routing && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-chemistry && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-filesystem-connectors && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-platform-pdf-utils && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-apidoc-server && mvn clean install -DskipTests -X && cd .. && \
-        cd nuxeo-connect-tools && mvn clean install -DskipTests -X && cd .. && \
-        cd ../../../nuxeo-logs-viewer && git checkout release-10.10-HF62 && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-shell && git checkout release-10.10-HF62 && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo/nuxeo-distribution/nuxeo-startup-wizard && mvn clean install -DskipTests && \
-        mvn clean install -N && \
-        cd .. && mvn clean install -N && \
-        cd nuxeo-nxr-server && mvn clean install -DskipTests && \
-        mvn clean install -N && cd .. && \
-        cd nuxeo-nxr-jsf-ui && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-launcher && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-server-tomcat && mvn clean install -DskipTests && cd .. && \
-        cd ../../addons/nuxeo-platform-audio && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-platform-video/nuxeo-platform-video-api && mvn clean install -DskipTests && cd .. && \
-        mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-dam/nuxeo-dam && mvn clean install -DskipTests && cd ../.. && \
-        cd ../../nuxeo-common && mvn clean install -DskipTests && cd .. && \
-        cd nuxeo-core/nuxeo-core-api && mvn clean install -DskipTests && cd ../.. && \
-        cd nuxeo-services/nuxeo-platform-filemanager-core && mvn clean install -DskipTests && cd ../.. && \
-        cd nuxeo-platform-audio/nuxeo-platform-audio-jsf && mvn clean install -DskipTests"
+        mvn clean install -DskipTests -X -e"
