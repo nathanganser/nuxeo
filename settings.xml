@@ -3,7 +3,7 @@
   <activeProfiles>
     <activeProfile>Nuxeo</activeProfile>
   </activeProfiles>
-
+  
   <profiles>
     <profile>
       <id>Nuxeo</id>
@@ -52,24 +52,9 @@
           </snapshots>
         </repository>
       </repositories>
-
-      <!-- Adding the provided pluginRepository -->
-      <pluginRepositories>
-        <pluginRepository>
-          <id>myPluginRepo</id>
-          <name>My Plugins repo</name>
-          <url>https://maven.nuxeo.org/nexus/content/groups/public</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
     </profile>
   </profiles>
-
+  
   <servers>
     <server>
       <id>central</id>
